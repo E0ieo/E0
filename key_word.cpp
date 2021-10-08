@@ -23,7 +23,7 @@ int if_elseif_Else_num=0;
 int top=-1;
 
 
-int Judge_1 ( string x, string y )//¶¨ÒåÒ»¸öº¯ÊıÓë¹Ø¼ü×Ö½øĞĞ±È¶Ô£¬ÊÇ·µ»Ø1£¬²»ÊÇ·µ»Ø0 
+int Judge_1 ( string x, string y )//Define a function to compare with a keyword. It returns 1 instead of 0 
 {
 	int Judge_2( char str );
 	int position = x.find( y , 0 );
@@ -54,7 +54,7 @@ int Judge_1 ( string x, string y )//¶¨ÒåÒ»¸öº¯ÊıÓë¹Ø¼ü×Ö½øĞĞ±È¶Ô£¬ÊÇ·µ»Ø1£¬²»ÊÇ·
 
 
 
-int Judge_2( char str )//ÅĞ¶ÏÊÇ·ñÊÇ×ÖÄ¸£¬ÊÇ·µ»Ø1£¬²»ÊÇ·µ»Ø0 
+int Judge_2( char str )//Judge whether it is a letter, return 1, not 0
 {
 	if( ( str<='z' && str >= 'a' ) || ( str <= 'Z' && str >= 'A' ) )
 		return 1;
@@ -64,7 +64,7 @@ int Judge_2( char str )//ÅĞ¶ÏÊÇ·ñÊÇ×ÖÄ¸£¬ÊÇ·µ»Ø1£¬²»ÊÇ·µ»Ø0
 
 
 
-void rank_12(string str)//ºËĞÄ×Ö·û±È¶Ô£¬²¢ÇÒÍ³¼ÆSwitch-caseµÄÊıÁ¿ 
+void rank_12(string str)//Compare the core characters and count the number of switch cases 
 {
 		for(int i = 0; i < 32; i++ )
 		{
@@ -87,9 +87,9 @@ void rank_12(string str)//ºËĞÄ×Ö·û±È¶Ô£¬²¢ÇÒÍ³¼ÆSwitch-caseµÄÊıÁ¿
 }
 
 
-void rank_34( string str )//if_else¼ÆÊıºÍif_elseif_elseÇ¶Ì×µÄ¼ÆÊı	 
+void rank_34( string str )//if_ Else count and if_ elseif_ Else nested count	 
 {
-	if( Judge_1( str , "else if" ) )//ÏÈ¶Ô±Èelse ifÒòÎªelse ifÖĞÒ²°üº¬if 
+	if( Judge_1( str , "else if" ) )//Compare else if first, because else if also contains if
 	{
 		top++;
 		stack[top] = 2;
@@ -140,15 +140,15 @@ int main()
 	ifstream myfile( Myfile.c_str() );
 	int Judge_1( string x,string y );
 	int judge_2( char str);
-	void rank_12( string str );//¹Ø¼ü×ÖÅĞ¶ÏÒÔ¼°switch-case¼ÆÊı 
-	void rank_34( string str );//if_else¼ÆÊıºÍif_elseif_elseÇ¶Ì×µÄ¼ÆÊı	 
-	while ( getline( myfile ,temp ))//Ò»ĞĞĞĞ¶ÁÈ¡ 
+	void rank_12( string str );//Keyword judgment and switch case count
+	void rank_34( string str );//if_ Else count and if_ elseif_ Else nested count
+	while ( getline( myfile ,temp ))//Read line by line
 	{
 		istringstream is ( temp );
 		string s;
 		if( Rank >= 3)
 		{
-			rank_34( temp );//ÒòÎªif_elseÇ¶Ì×ÓĞ¿Õ¸ñ 
+			rank_34( temp );//Because if_ Else nested with spaces 
 		}
 		while( is >> s ) 
 		{
@@ -177,11 +177,11 @@ int main()
 		}
 		cout << endl;
 	}
-	if( Rank >=3 )
+	if( Rank >= 3 )
 	{
 		cout << "If-else num:" << ifelse_num << endl;
 	}
-	if( Rank >=4 )
+	if( Rank >= 4 )
 	{
 		cout << "If-elseif-else num:" <<if_elseif_Else_num;
 	}
